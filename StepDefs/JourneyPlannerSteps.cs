@@ -41,7 +41,6 @@ namespace tfl_test.StepDefs
         [When(@"user searches to ""([^""]*)""")]
         public void WhenUserSearchesTo(string to)
         {
-            homePage = new HomePage(driver);
             homePage.InputTo(to);
             
         }
@@ -49,7 +48,7 @@ namespace tfl_test.StepDefs
         [When(@"user click on Plan my journey")]
         public void WhenUserClickOnPlanMyJourney()
         {
-            homePage = new HomePage(driver);
+            
             homePage.ClickPlanMyJourney();  
         }
 
@@ -66,21 +65,21 @@ namespace tfl_test.StepDefs
         [When(@"user searches from postcode ""([^""]*)""")]
         public void WhenUserSearchesFromPostcode(string fromPostcode)
         {
-            homePage = new HomePage(driver);
+            
             homePage.InputFrom(fromPostcode);
         }
 
         [When(@"user searches to postcode ""([^""]*)""")]
         public void WhenUserSearchesToPostcode(string toPostcode)
         {
-            homePage = new HomePage(driver);
+            
             homePage.InputTo(toPostcode);
         }
 
         [Then(@"user should see an error ""([^""]*)""")]
         public void ThenUserShouldSeeAnError(string expected)
         {
-            journeyResultsPage = new JourneyResultsPage(driver);
+            
             var actualResult = journeyResultsPage.journeyResultSummary.Text;
             StringAssert.Contains(expected, actualResult);
         }
@@ -89,7 +88,7 @@ namespace tfl_test.StepDefs
         [When(@"user click on Edit Journey")]
         public void WhenUserClickOnEditJourney()
         {
-            journeyResultsPage = new JourneyResultsPage(driver);
+            
             journeyResultsPage.btnEditJourney.Click();
         }
 
@@ -97,28 +96,28 @@ namespace tfl_test.StepDefs
         [When(@"changes the from field to ""([^""]*)""")]
         public void WhenChangesTheFromFieldTo(string editFrom)
         {
-            journeyResultsPage = new JourneyResultsPage(driver);
+            
             journeyResultsPage.InputFrom(editFrom);
         }
 
         [When(@"user clicks on Update Journey")]
         public void WhenUserClicksOnUpdateJourney()
         {
-            journeyResultsPage = new JourneyResultsPage(driver);
+            
             journeyResultsPage.ClickUpdateJourney();    
         }
 
         [When(@"user click on Recents tab")]
         public void WhenUserClickOnRecentsTab()
         {
-            homePage = new HomePage(driver);
+            
             homePage.ClickRecents();
         }
 
         [Then(@"user should able to see recent search stations ""([^""]*)""")]
         public void ThenUserShouldAbleToSeeRecentSearchStations(string expected)
         {
-            homePage = new HomePage(driver);
+            
             var actualResult = homePage.recentJourney.Text;
             Assert.That(actualResult, Is.EqualTo(expected));  
         }
